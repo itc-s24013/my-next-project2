@@ -41,7 +41,6 @@ const data: {
 export default function Home() {
   const name = "世界";
   const sliceData = data.contents.slice(0, 2);
-  // const sliceData: News[] = []; // ニュースがない場合のための表示確認用
 
   return (
     <>
