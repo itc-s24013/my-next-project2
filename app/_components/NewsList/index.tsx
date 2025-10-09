@@ -1,16 +1,7 @@
 import Image from "next/image";
 
 import styles from "./index.module.css";
-
-type News = {
-  id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
+import { News } from "../../_libs/microcms";
 
 const data: {
   contents: News[];
