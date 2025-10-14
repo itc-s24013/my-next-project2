@@ -1,3 +1,6 @@
+import Image from "next/image";
+import styles from "./index.module.css";
+
 const data = {
   contents: [
     {
@@ -41,8 +44,29 @@ const data = {
 
 export default function Page() {
   return (
-    <div style={{ margin: 20 }}>
-      <h1>メンバーページ</h1>
+    <div className={styles.container}>
+      {data.contents.length === 0 ? (
+        <p className={styles.empty}>メンバーが登録されていません。</p>
+      ) : (
+        <ul>
+          {data.contents.map((member) => (
+            <li key={member.id} className={styles.list}>
+              <Image
+                src={member.image.url}
+                alt=""
+                width={member.image.width}
+                height={member.image.height}
+                className={styles.image}
+              />
+              <dl>
+                <dt className={styles.name}>{member.name}</dt>
+                <dd className={styles.position}>{member.position}</dd>
+                <dd className={styles.profile}>{member.profile}</dd>
+              </dl>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
