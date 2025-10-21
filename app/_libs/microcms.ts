@@ -52,3 +52,16 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
   });
   return listData;
 };
+
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<News>({
+    // この引数はdetailDataに直接入れる引数ではなく、client.getListDetailに渡す引数
+    endpoint: "news",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
