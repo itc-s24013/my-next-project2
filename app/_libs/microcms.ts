@@ -4,6 +4,7 @@ import type {
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
+import { revalidate } from "../news/page";
 
 export type Member = {
   name: string;
@@ -62,6 +63,11 @@ export const getNewsDetail = async (
     endpoint: "news",
     contentId,
     queries,
+    customRequestInit: {
+      next: {
+        revalidate: queries?.draftKey === undefined ? 60 : 0,
+      },
+    },
   });
   return detailData;
 };
