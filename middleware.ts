@@ -1,9 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { createNextAuthMiddleware } from "nextjs-basic-auth-middleware";
 
-export function middleware(reqest: NextRequest) {
-  console.log("middleware: " + reqest.url);
+export const middleware = createNextAuthMiddleware();
 
-  return NextResponse.next();
-}
-
-export const config = {};
+export const config = {
+  matcher: ["/(.*)"],
+};
